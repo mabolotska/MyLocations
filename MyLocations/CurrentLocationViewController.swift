@@ -14,7 +14,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     var location: CLLocation?
     
-    
+   
     var updatingLocation = false
     var lastLocationError: Error?
     
@@ -73,8 +73,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
       _ manager: CLLocationManager,
       didUpdateLocations locations: [CLLocation]
     ){
-        
-        let newLocation = locations.last! 
+        location = newLocation    // Add this
+         updateLabels()
+        let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
         // 1
           if newLocation.timestamp.timeIntervalSinceNow < -5 {
@@ -109,23 +110,41 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
          }
     
     func updateLabels() {
-      if let location = location {
-        latitudeLabel.text = String(
-          format: "%.8f",
-          location.coordinate.latitude)
-        longitudeLabel.text = String(
-          format: "%.8f",
-          location.coordinate.longitude)
-        tagButton.isHidden = false
-        messageLabel.text = ""
-      } else {
-        latitudeLabel.text = ""
-        longitudeLabel.text = ""
-        addressLabel.text = ""
-        tagButton.isHidden = true
-        messageLabel.text = "Tap 'Get My Location' to Start"
-          configureGetButton()
-    } }
+        //      if let location = location {
+        //        latitudeLabel.text = String(
+        //          format: "%.8f",
+        //          location.coordinate.latitude)
+        //        longitudeLabel.text = String(
+        //          format: "%.8f",
+        //          location.coordinate.longitude)
+        //        tagButton.isHidden = false
+        //        messageLabel.text = ""
+        //      } else {
+        //        latitudeLabel.text = ""
+        //        longitudeLabel.text = ""
+        //        addressLabel.text = ""
+        //        tagButton.isHidden = true
+        //        messageLabel.text = "Tap 'Get My Location' to Start"
+        //          configureGetButton()
+        //    }
+        
+        
+        if let location = location {
+           latitudeLabel.text = String(
+             format: "%.8f",
+             location.coordinate.latitude)
+           longitudeLabel.text = String(
+             format: "%.8f",
+             location.coordinate.longitude)
+           tagButton.isHidden = false
+           messageLabel.text = ""
+         } else {
+           latitudeLabel.text = ""
+           longitudeLabel.text = ""
+           addressLabel.text = ""
+           tagButton.isHidden = true
+           messageLabel.text = "Tap 'Get My Location' to Start"
+       }}
     
     // MARK: - Helper Methods
     func showLocationServicesDeniedAlert() {
