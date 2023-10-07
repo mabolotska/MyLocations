@@ -19,6 +19,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var updatingLocation = false
     var lastLocationError: Error?
     
+    let geocoder = CLGeocoder()
+    var placemark: CLPlacemark?
+    var performingReverseGeocoding = false
+    var lastGeocodingError: Error?
+    
     
     
     @IBOutlet weak var messageLabel: UILabel!
@@ -53,7 +58,14 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             return
         }
         
-        startLocationManager()
+        if updatingLocation {
+          stopLocationManager()
+        } else {
+          location = nil
+          lastLocationError = nil
+          startLocationManager()
+        }
+        
         updateLabels()
     }
     
@@ -76,7 +88,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
       didUpdateLocations locations: [CLLocation]
     ){
        
-        let newLocation = locations.last!
+        let newLocation = locations.last! 
         print("didUpdateLocations \(newLocation)")
         // 1
           if newLocation.timestamp.timeIntervalSinceNow < -5 {
@@ -86,7 +98,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
           if newLocation.horizontalAccuracy < 0 {
         return
         }
-        
         if location == nil || location!.horizontalAccuracy >
       newLocation.horizontalAccuracy {
       // 4
@@ -99,21 +110,32 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             stopLocationManager()
           }
           updateLabels()
+            
+            if !performingReverseGeocoding {
+                print("*** Going to geocode")
+                performingReverseGeocoding = true
+                geocoder.reverseGeocodeLocation(newLocation) {placemarks,
+          error in
+                  if let error = error {
+                    print("*** Reverse Geocoding error: \(error.localizedDescription)")
+          return
+                          }
+                               if let places = placemarks {
+                                 print("*** Found places: \(places)")
+                               }
+                       } }
+                          
+                          
         }
-        location = newLocation    
-        
-        lastLocationError = nil
-        
-         updateLabels()
         
         
     }
     
     func configureGetButton() {
-      if updatingLocation {
-        getButton.setTitle("Stop", for: .normal)
-      } else {
-          getButton.setTitle("Get My Location", for: .normal)
+        if updatingLocation {
+          getButton.setTitle("Stop", for: .normal)
+        } else {
+            getButton.setTitle("Get My Location", for: .normal)
            }
          }
     
@@ -169,6 +191,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 messageLabel.text = statusMessage
               }
        }
+    
+ 
     
     // MARK: - Helper Methods
     func showLocationServicesDeniedAlert() {
