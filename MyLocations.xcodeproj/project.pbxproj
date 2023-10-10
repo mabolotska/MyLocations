@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0AEDA242AD49A4200C95E82 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AEDA232AD49A4200C95E82 /* LocationDetailsViewController.swift */; };
 		D0B828B42AC4C9F8005508BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B828B32AC4C9F8005508BD /* AppDelegate.swift */; };
 		D0B828B62AC4C9F8005508BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B828B52AC4C9F8005508BD /* SceneDelegate.swift */; };
 		D0B828B82AC4C9F8005508BD /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B828B72AC4C9F8005508BD /* CurrentLocationViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0AEDA232AD49A4200C95E82 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		D0B828B02AC4C9F8005508BD /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B828B32AC4C9F8005508BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B828B52AC4C9F8005508BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 		D0B828A72AC4C9F7005508BD = {
 			isa = PBXGroup;
 			children = (
+				D0AEDA232AD49A4200C95E82 /* LocationDetailsViewController.swift */,
 				D0B828B22AC4C9F8005508BD /* MyLocations */,
 				D0B828B12AC4C9F8005508BD /* Products */,
 			);
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0AEDA242AD49A4200C95E82 /* LocationDetailsViewController.swift in Sources */,
 				D0B828B82AC4C9F8005508BD /* CurrentLocationViewController.swift in Sources */,
 				D0B828B42AC4C9F8005508BD /* AppDelegate.swift in Sources */,
 				D0B828B62AC4C9F8005508BD /* SceneDelegate.swift in Sources */,
@@ -295,10 +299,12 @@
 				DEVELOPMENT_TEAM = XUYG7TPG2C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyLocations/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS\ncoordinates for your location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "location-services";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -324,10 +330,12 @@
 				DEVELOPMENT_TEAM = XUYG7TPG2C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyLocations/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS\ncoordinates for your location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "location-services";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
