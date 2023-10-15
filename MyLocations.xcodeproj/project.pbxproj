@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0A78AD52ADB232200B53309 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A78AD42ADB232200B53309 /* CategoryPickerViewController.swift */; };
 		D0AEDA242AD49A4200C95E82 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AEDA232AD49A4200C95E82 /* LocationDetailsViewController.swift */; };
 		D0B828B42AC4C9F8005508BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B828B32AC4C9F8005508BD /* AppDelegate.swift */; };
 		D0B828B62AC4C9F8005508BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B828B52AC4C9F8005508BD /* SceneDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0A78AD42ADB232200B53309 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		D0AEDA232AD49A4200C95E82 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		D0B828B02AC4C9F8005508BD /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B828B32AC4C9F8005508BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,7 +44,6 @@
 		D0B828A72AC4C9F7005508BD = {
 			isa = PBXGroup;
 			children = (
-				D0AEDA232AD49A4200C95E82 /* LocationDetailsViewController.swift */,
 				D0B828B22AC4C9F8005508BD /* MyLocations */,
 				D0B828B12AC4C9F8005508BD /* Products */,
 			);
@@ -60,8 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				D0B828B32AC4C9F8005508BD /* AppDelegate.swift */,
+				D0AEDA232AD49A4200C95E82 /* LocationDetailsViewController.swift */,
 				D0B828B52AC4C9F8005508BD /* SceneDelegate.swift */,
 				D0B828B72AC4C9F8005508BD /* CurrentLocationViewController.swift */,
+				D0A78AD42ADB232200B53309 /* CategoryPickerViewController.swift */,
 				D0B828B92AC4C9F8005508BD /* Main.storyboard */,
 				D0B828BC2AC4C9FB005508BD /* Assets.xcassets */,
 				D0B828BE2AC4C9FB005508BD /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 				D0AEDA242AD49A4200C95E82 /* LocationDetailsViewController.swift in Sources */,
 				D0B828B82AC4C9F8005508BD /* CurrentLocationViewController.swift in Sources */,
 				D0B828B42AC4C9F8005508BD /* AppDelegate.swift in Sources */,
+				D0A78AD52ADB232200B53309 /* CategoryPickerViewController.swift in Sources */,
 				D0B828B62AC4C9F8005508BD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
