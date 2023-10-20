@@ -7,10 +7,12 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
+    var managedObjectContext: NSManagedObjectContext!
     
     var location: CLLocation?
     var timer: Timer?
@@ -49,6 +51,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         super.viewDidLoad()
         updateLabels()
     }
+    
+  
     
     // MARK: - Actions
     @IBAction func getLocation() {
@@ -236,6 +240,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     LocationDetailsViewController
         controller.coordinate = location!.coordinate
         controller.placemark = placemark
+          controller.managedObjectContext = managedObjectContext
       }
     }
     

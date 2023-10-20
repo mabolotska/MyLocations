@@ -6,11 +6,14 @@
 //
 
 import UIKit
+//import Date
 import CoreLocation
+import CoreData
 
 class LocationDetailsViewController: UITableViewController {
     
     var categoryName = "No Category"
+    var managedObjectContext: NSManagedObjectContext!
 
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var categoryLabel: UILabel!
@@ -29,7 +32,15 @@ class LocationDetailsViewController: UITableViewController {
     
     // MARK: - Actions
     @IBAction func done() {
-      navigationController?.popViewController(animated: true)
+        guard let mainView = navigationController?.parent?.view
+           else { return }
+        let hudView = HudView.hud(inView: view, animated: true)
+         hudView.text = "Tagged"
+        
+        afterDelay(0.6) {
+            hudView.hide()
+            self.navigationController?.popViewController(animated: true)
+          }
     }
     @IBAction func cancel() {
       navigationController?.popViewController(animated: true)
@@ -106,6 +117,8 @@ class LocationDetailsViewController: UITableViewController {
       }
     }
     
+
+    
     @IBAction func categoryPickerDidPickCategory(
       _ segue: UIStoryboardSegue
     ){
@@ -146,4 +159,6 @@ class LocationDetailsViewController: UITableViewController {
     }
       descriptionTextView.resignFirstResponder()
     }
+    
+ 
 }
