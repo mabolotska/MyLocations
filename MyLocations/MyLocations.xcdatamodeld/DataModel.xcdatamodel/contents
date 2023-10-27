@@ -6,6 +6,6 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="locationDescription" optional="YES" attributeType="String"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="placemark" attributeType="Transformable"/>
+        <attribute name="placemark" optional="YES" attributeType="Transformable"/>
     </entity>
 </model>

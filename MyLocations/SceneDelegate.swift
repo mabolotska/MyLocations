@@ -26,20 +26,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
 
 
-    func scene(
-      _ scene: UIScene,
-      willConnectTo session: UISceneSession,
-      options connectionOptions: UIScene.ConnectionOptions
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions
     ){
-    let tabController = window!.rootViewController as!
-    UITabBarController
-      if let tabViewControllers = tabController.viewControllers {
-        let navController = tabViewControllers[0] as!
-    UINavigationController
-        let controller = navController.viewControllers.first as!
-    CurrentLocationViewController
-        controller.managedObjectContext = managedObjectContext
-      }
+    let tabController = window!.rootViewController as! UITabBarController
+        if let tabViewControllers = tabController.viewControllers {
+          // First tab
+          var navController = tabViewControllers[0] as!
+        UINavigationController
+          let controller1 = navController.viewControllers.first
+                            as! CurrentLocationViewController
+          controller1.managedObjectContext = managedObjectContext
+        // Second tab
+          navController = tabViewControllers[1] as!
+        UINavigationController
+          let controller2 = navController.viewControllers.first
+                            as! LocationsViewController
+          controller2.managedObjectContext = managedObjectContext
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -70,6 +73,44 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    // MARK: - Helper methods
+    func listenForFatalCoreDataNotifications() {
+      // 1
+      NotificationCenter.default.addObserver(
+        forName: dataSaveFailedNotification,
+        object: nil,
+        queue: OperationQueue.main
+    ) { _ in // 2
+          let message = """
+          There was a fatal error in the app and it cannot continue.
+          Press OK to terminate the app. Sorry for the
+    inconvenience.
+    """
+    // 3
+          let alert = UIAlertController(
+            title: "Internal Error",
+            message: message,
+            preferredStyle: .alert)
+    // 4
+          let action = UIAlertAction(title: "OK", style: .default) {
+    _ in
+    // 5
+          let tabController = self.window!.rootViewController!
+    let exception = NSException(
+      name: NSExceptionName.internalInconsistencyException,
+      reason: "Fatal Core Data error",
+      userInfo: nil)
+      exception.raise()
+    }
+    alert.addAction(action)
+        
+        // 5
+              let tabController = self.window!.rootViewController!
+        tabController.present(
+            alert,
+            animated: true,
+            completion: nil)
+      }
+    }
 }
 
