@@ -13,6 +13,22 @@ import CoreData
 class LocationDetailsViewController: UITableViewController {
     var date = Date()
     
+    var locationToEdit: Location? {
+      didSet {
+        if let location = locationToEdit {
+            descriptionText = location.locationDescription ?? ""
+            categoryName = location.category ?? ""
+          date = location.date
+          coordinate = CLLocationCoordinate2DMake(
+            location.latitude,
+            location.longitude)
+          placemark = location.placemark
+    } }
+    }
+    
+    
+    var descriptionText = ""
+    
     var categoryName = "No Category"
     var managedObjectContext: NSManagedObjectContext!
 
@@ -38,14 +54,33 @@ class LocationDetailsViewController: UITableViewController {
          let hudView = HudView.hud(inView: mainView, animated: true)
          hudView.text = "Tagged"
          // 1
-         let location = Location(context: managedObjectContext)
-         // 2
-         location.locationDescription = descriptionTextView.text
+        let location: Location
+        if let temp = locationToEdit {
+          hudView.text = "Updated"
+          location = temp
+        } else {
+          hudView.text = "Tagged"
+          location = Location(context: managedObjectContext)
+        }
+      location.locationDescription = descriptionTextView.text
+//         let location = Location(context: managedObjectContext)
+//         // 2
+//         location.locationDescription = descriptionTextView.text
          location.category = categoryName
          location.latitude = coordinate.latitude
          location.longitude = coordinate.longitude
          location.date = date
          location.placemark = placemark
+        
+       
+        if let temp = locationToEdit {
+          hudView.text = "Updated"
+          location = temp
+        } else {
+          hudView.text = "Tagged"
+          location = Location(context: managedObjectContext)
+        }
+      location.locationDescription = descriptionTextView.text
          // 3
          do {
            try managedObjectContext.save()
@@ -70,12 +105,18 @@ class LocationDetailsViewController: UITableViewController {
     
     override func viewDidLoad() {
       super.viewDidLoad()
+        
+        if let location = locationToEdit {
+          title = "Edit Location"
+        }
+        
+        
         dateLabel.text = format(date: date)
         
         categoryLabel.text = categoryName
         
         
-      descriptionTextView.text = ""
+        descriptionTextView.text = descriptionText
       categoryLabel.text = ""
       latitudeLabel.text = String(
         format: "%.8f",

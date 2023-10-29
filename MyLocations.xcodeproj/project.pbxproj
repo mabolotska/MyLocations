@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0089D742AED02B100372DEF /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0089D732AED02B100372DEF /* LocationCell.swift */; };
 		D06577902AE139BC003C3EDB /* MyLocations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D065778E2AE139BC003C3EDB /* MyLocations.xcdatamodeld */; };
 		D06577932AE13C73003C3EDB /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06577912AE13C73003C3EDB /* Location+CoreDataClass.swift */; };
 		D06577942AE13C73003C3EDB /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06577922AE13C73003C3EDB /* Location+CoreDataProperties.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0089D732AED02B100372DEF /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		D065778F2AE139BC003C3EDB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		D06577912AE13C73003C3EDB /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D06577922AE13C73003C3EDB /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				D06577922AE13C73003C3EDB /* Location+CoreDataProperties.swift */,
 				D06577912AE13C73003C3EDB /* Location+CoreDataClass.swift */,
 				D06577F52AEA75FE003C3EDB /* LocationsViewController.swift */,
+				D0089D732AED02B100372DEF /* LocationCell.swift */,
 			);
 			path = MyLocations;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				D08FBF3A2ADDC69A00935B42 /* HudView.swift in Sources */,
 				D06577F62AEA75FE003C3EDB /* LocationsViewController.swift in Sources */,
 				D06577942AE13C73003C3EDB /* Location+CoreDataProperties.swift in Sources */,
+				D0089D742AED02B100372DEF /* LocationCell.swift in Sources */,
 				D08FBF3C2ADE705700935B42 /* Functions.swift in Sources */,
 				D0B828B42AC4C9F8005508BD /* AppDelegate.swift in Sources */,
 				D06577932AE13C73003C3EDB /* Location+CoreDataClass.swift in Sources */,
