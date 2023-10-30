@@ -11,7 +11,7 @@ import CoreLocation
 
 
 class LocationsViewController: UITableViewController {
-    //var locations = [Location]()
+    var locations = [Location]()
     
     lazy var fetchedResultsController:
     NSFetchedResultsController<Location> = {
@@ -29,13 +29,22 @@ class LocationsViewController: UITableViewController {
         sectionNameKeyPath: nil,
         cacheName: "Locations")
       fetchedResultsController.delegate = self
+        
+        let sort1 = NSSortDescriptor(key: "category", ascending: true)
+        let sort2 = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sort1, sort2]
       return fetchedResultsController
     }()
     
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
       managedObjectContext: self.managedObjectContext,
-      sectionNameKeyPath: nil,
+      sectionNameKeyPath: "category",              // change this
       cacheName: "Locations")
+    
+//    let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+//managedObjectContext: self.managedObjectContext,
+//      sectionNameKeyPath: nil,
+//      cacheName: "Locations")
     
     
   var managedObjectContext: NSManagedObjectContext!
@@ -62,7 +71,12 @@ class LocationsViewController: UITableViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
       performFetch()
+        
+        navigationItem.rightBarButtonItem = editButtonItem
     }
+    
+    
+    
     // MARK: - Helper methods
     func performFetch() {
       do {
@@ -96,6 +110,21 @@ class LocationsViewController: UITableViewController {
       return sectionInfo.numberOfObjects
     }
     
+    override func tableView(
+      _ tableView: UITableView,
+      commit editingStyle: UITableViewCell.EditingStyle,
+      forRowAt indexPath: IndexPath
+    ){
+        if editingStyle == .delete {
+          let location = fetchedResultsController.object(
+            at: indexPath)
+          managedObjectContext.delete(location)
+          do {
+            try managedObjectContext.save()
+          } catch {
+            fatalCoreDataError(error)
+          }
+      } }
     
 //    
 //    override func tableView(
